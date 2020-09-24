@@ -1,0 +1,5 @@
+INSERT INTO enderecos(consumidor_nome, end_name, localizacao)
+	VALUES('Cooperativa Coorimbatá', 'Cooperativa Coorimbatá', ST_SetSRID(ST_MakePoint(-15.613258, -56.105691),4326))
+	
+INSERT INTO enderecos(consumidor_nome, end_name, localizacao)
+	VALUES('ic ufmt', 'ic ufmt', ST_SetSRID(ST_MakePoint(-15.608340, -56.062905),4326))

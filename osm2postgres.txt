@@ -1,0 +1,5 @@
+#Entrar como usuario postgres -> sudo -su postgres
+
+wget https://download.openstreetmap.fr/extracts/south-america/brazil/central-west/mato-grosso-latest.osm.pbf
+
+osm2pgsql -p matogrosso -d postgis -U postgres -H localhost -W -G --slim -l mato-grosso-latest.osm.pbf 

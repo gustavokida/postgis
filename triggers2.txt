@@ -1,0 +1,29 @@
+CREATE OR REPLACE FUNCTION caminhos_insert() RETURNS trigger AS $caminhos_insert$
+	BEGIN
+		IF (end_name != 'Cooperativa Coorimbatá') AND 
+		IF (EXISTS(
+			SELECT end_name
+			FROM enderecos
+			WHERE end_name = 'Cooperativa Coorimbatá')
+		) THEN
+			INSERT INTO caminhos(end_id, st_distance, distancia_linha)
+				VALUES(end_id,
+					ST_Distance(localizacao, loc2 in(
+						SELECT localizacao as loc2
+						FROM enderecos
+						WHERE end_name = 'Cooperativa Coorimbatá')),
+					ST_MakeLine(localizacao, loc2 in(
+						SELECT localizacao as loc2
+						FROM enderecos
+						WHERE end_name = 'Cooperativa Coorimbatá'))
+					);
+			
+		END IF;
+	END;
+$caminhos_insert$ LANGUAGE plpgsql;
+		
+CREATE OR REPLACE TRIGGER caminhos_insert
+AFTER INSERT ON enderecos
+FOR EACH ROW 
+EXECUTE PROCEDURE caminhos_insert();
+
