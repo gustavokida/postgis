@@ -1,6 +1,6 @@
 Documentação do trabalho de dados espaciais utilizando postgis. Abaixo será detalhado cada arquivo presente no trabalho.
 Para visualizar os dados espaciais utilize o pgadmin, selecione os dados que deseja ver e clique no botao com um olho, ao lado do nome da coluna aonde está o output dos dados.
-
+Executar o sql "CREATE EXTENSION postgis;" para ativar o postgis.
 
 
 1- Para transformar os dados OSM para o postgres, siga os passos:
